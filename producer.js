@@ -10,14 +10,14 @@ const run = async () => {
       clientId: "myapp",
       brokers: ["localhost:9092"],
     });
-    // call a producer
+    // create a producer
     const producer = kafka.producer();
     console.log("Connecting....................");
     // connect to an producer
     // A-M -> partition 0 && N-Z -> partition 1
     await producer.connect();
     console.log("Connected Successfully!");
-    const partition = msg[0] < "N" ? 0 : 1;
+    const partition = msg[0] < "n" ? 0 : 1;
     const res = await producer.send({
       topic: "Users",
       messages: [
